@@ -1,0 +1,49 @@
+version: '2'
+services:
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: kutkop123
+    volumes:
+      - './data/:/var/lib/mysql'
+    ports:
+      - 3306:3306
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.5
+  node:
+    image: "node:8"
+    user: "node"
+    restart: unless-stopped
+    working_dir: /home/node/telegram
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./node:/home/node/telegram
+    command: "node bot.js"
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.7
+  web:
+    restart: always
+    build:
+      context: ./php
+      
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    volumes:
+      - ./web:/var/www/html/
+    ports:
+      - 80:80
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.8
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.5.0.0/16
+         gateway: 10.5.0.1

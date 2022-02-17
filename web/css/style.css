@@ -1,0 +1,61 @@
+html {
+  background-color: #C6CCB2;
+}
+* {
+  font-family: 'Roboto', sans-serif;
+}
+tbody:nth-child(1) > tr:nth-child(1) > th {
+  background-color: #BF4E30!important;
+  color:#E5EAFA!important;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+input {
+  background-color:inherit;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+  color:#000;
+}
+tr:nth-child(odd) {
+  background-color: #E5EAFA;
+  color: #000;
+}
+.button {
+  font-size:13px;
+  display: inline-block;
+  width: auto;
+  margin-right: 5px;
+  height: auto;
+  background: inherit;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: inherit;
+  font-weight: bold;
+  line-height: 7px;
+  border: solid 1px;
+  text-decoration:none;
+  cursor:pointer;
+}
+input[name="price"] {
+  height:22px;
+  width:72px;
+  margin-right:5px;
+}
+form {
+  display: inline-block;
+}
+
+h2 {
+  color:#262626;
+}
