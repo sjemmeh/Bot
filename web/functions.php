@@ -192,7 +192,7 @@ function addtoStock($product, $amount) {
     }
     
     $sql = "UPDATE products SET quantity = quantity + $amount WHERE product='$product'";
-    $conn->query($sql)
+    $conn->query($sql);
     $conn->close();
 }
 function archiveMessage($id) {
@@ -204,7 +204,7 @@ function archiveMessage($id) {
     }
 
     $sql = "UPDATE messages SET archived='1' WHERE id=$id";
-    $conn->query($sql)
+    $conn->query($sql);
     $conn->close();
 }
 
