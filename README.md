@@ -5,7 +5,7 @@ Very basic, using MySQL to save orders. <br />
 ## .env file should contain the following:<br />
 ```
 APIKEY = ''
-MYSQLHOSTNAME = '10.5.0.5' 
+MYSQLHOSTNAME = '10.5.0.5' //Standard
 MYSQLUSERNAME = '' 
 MYSQLPASSWORD = '' 
 MYSQLDATABASE = '' 
