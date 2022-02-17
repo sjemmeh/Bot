@@ -178,12 +178,12 @@ bot.onText(/\/registreer (.+)/i, function(msg, match) {
   if (data != 'status') return
   
   isAuthorized(chatId, function(result){
+    console.log("Recieved register command with result " + result)
+    
     if (result == 0) return bot.sendMessage(msg.from.id, "*Je registratiestatus:*\nJe registratie is nog niet geaccepteerd.", opts_pending)
     if (result == 1) return bot.sendMessage(msg.from.id, "*Welkom! Kies een van de opties:*", opts_authorized)
     if (result == 2) return bot.sendMessage(msg.from.id, "*Je registratiestatus:*\nJe registratie is geweigerd. \n*Je chatID is:* " + chatId, opts_pending)
     bot.sendMessage(msg.from.id, "*Je hebt je nog niet geregistreerd:*", opts_unauthorized)
-
-    console.log("Recieved status command with result " + result)
   })
 })
 /*
