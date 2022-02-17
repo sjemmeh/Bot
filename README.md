@@ -1,7 +1,7 @@
 # Telegram order bot with WebUI <br />
 Simple telegram bot to order items via chat.  <br />
 Very basic, using MySQL to save orders. <br />
-
+# Place .env file in main folder
 ## .env file should contain the following:<br />
 ```
 APIKEY = ''
@@ -10,5 +10,3 @@ MYSQLUSERNAME = ''
 MYSQLPASSWORD = '' 
 MYSQLDATABASE = '' 
 ```
-### Place .env file in main folder. 
-Cancel changes
