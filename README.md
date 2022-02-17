@@ -4,6 +4,7 @@ Very basic, using MySQL to save orders: <br />
 - Get a API key from <a href="https://t.me/BotFather" target="_blank" rel="noopener noreferrer">BotFather</a> <br />
 - WebUI on port 80 <br />
 - PHPMyadmin on port 8080 <br />
+- Create env file
 # Place .env file in main folder
 .env file should contain the following:<br />
 ```
