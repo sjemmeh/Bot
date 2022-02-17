@@ -35,6 +35,7 @@ services:
     depends_on:
       - db
     volumes:
+      - ./.env:/var/www/html/.env
       - ./web:/var/www/html/
     ports:
       - 80:80

@@ -12,7 +12,7 @@ const token = process.env.APIKEY
 const mysql_hostname = process.env.MYSQLHOSTNAME
 const mysql_username = process.env.MYSQLUSERNAME
 const mysql_password = process.env.MYSQLPASSWORD
-const mysql_database = 'data'
+const mysql_database = process.env.MYSQLDATABASE
 const debug = 0
 
 
