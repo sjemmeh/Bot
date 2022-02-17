@@ -6,3 +6,4 @@ MYSQLUSERNAME = ''
 MYSQLPASSWORD = '' 
 MYSQLDATABASE = '' 
 ```
+### Place .env file in main folder.
