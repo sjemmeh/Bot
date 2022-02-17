@@ -122,6 +122,10 @@ mysqli_close($conn);
 function markDone($id, $price) {
     require 'config.php';
 
+    if($price == '') {
+        echo '<script>window.location.replace("http://'.  $_SERVER['HTTP_HOST'] .'/?error=Geen%20prijs%20ingevoerd.")</script>';
+        die();
+    }
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);

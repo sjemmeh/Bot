@@ -1,8 +1,8 @@
 <?php 
-  //error_reporting(0);
+  error_reporting(0); // Fuck warnings
   require 'functions.php';
+  
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $error = 0;
     $type = $_POST["type"];
     
     if ($type == "edit") {
@@ -61,90 +61,98 @@
   <title>Telegram bot dashboard</title>
 </head>
 <body>
+  
+  <!-- Nieuwe orders -->
+  <h2>Nieuwe orders</h2>
+  <table>
+    <tr>
+      <th>Telegram gebruikersnaam</th>
+      <th>Product</th>
+      <th>Hoeveelheid</th>
+      <th>Orderid</th>
+      <th>Datum (YYYY/MM/DD)</th>
+      <th>Opties</th>
+    </tr>
+    <?php getIncomplete() ?>
+  </table>
+  
+  <!-- In behandeling -->
+  <h2>In behandeling</h2>
+  <table>
+    <tr>
+      <th>Telegram gebruikersnaam</th>
+      <th>Product</th>
+      <th>Hoeveelheid</th>
+      <th>Orderid</th>
+      <th>Datum (YYYY/MM/DD)</th>
+      <th>Opties</th>
+    </tr>
+    <?php getPending() ?>
+  </table>
 
-<h2>Nieuwe orders</h2>
-<table>
-  <tr>
-    <th>Telegram gebruikersnaam</th>
-    <th>Product</th>
-    <th>Hoeveelheid</th>
-    <th>Orderid</th>
-    <th>Datum (YYYY/MM/DD)</th>
-    <th>Opties</th>
-  </tr>
-<?php getIncomplete() ?>
-</table>
+  <!-- Voorraad -->
+  <h2>Voorraad</h2>
+  <table>
+    <tr>
+      <th>Product</th>
+      <th>Voorraad</th>
+      <th>Opties</th>
+    </tr>
+    <?php getStock(); ?>
+    <tr>
+    <form action="/index.php" method="post">
+      <input type="hidden" name="type" value="new">
+      <td> <input type='text' name='product'></td>
+      <td> <input type='text' name='quantity'></td>
+      <td> <input type="submit" class="button" value="Toevoegen"> </td>
+    </form>
+    </tr>
+    <?php getTotalstock(); ?>
+  </table>
 
-<h2>In behandeling</h2>
-<table>
-  <tr>
-    <th>Telegram gebruikersnaam</th>
-    <th>Product</th>
-    <th>Hoeveelheid</th>
-    <th>Orderid</th>
-    <th>Datum (YYYY/MM/DD)</th>
-    <th>Opties</th>
-  </tr>
-<?php getPending() ?>
-</table>
+  <!-- Nieuwe gebruikers -->
+  <h2>Nieuwe gebruikers</h2>
+  <table>
+    <tr>
+      <th>Gebruikersnaam</th>
+      <th>Opties</th>
+    </tr>
+  <?php getNewusers(); ?>
+  </table>
 
+  <!-- Berichten -->
+  <h2>Berichten:</h2>
+  <table>
+    <tr>
+      <th>Telegram gebruikersnaam</th>
+      <th>Bericht</th>
+      <th>Datum (YYYY/MM/DD)</th>
+      <th>Opties</th>
+    </tr>
+    <?php getMessages(); ?>
+  </table>
 
-
-<h2>Voorraad</h2>
-<table>
-  <tr>
-    <th>Product</th>
-    <th>Voorraad</th>
-    <th>Opties</th>
-  </tr>
-<?php getStock(); ?>
-
-
-<tr>
-<form action="/index.php" method="post">
-  <input type="hidden" name="type" value="new">
-  <td> <input type='text' name='product'></td>
-  <td> <input type='text' name='quantity'></td>
-  <td> <input type="submit" class="button" value="Toevoegen"> </td>
-</form>
-</tr>
-<?php getTotalstock(); ?>
-</table>
-
-<h2>Nieuwe gebruikers</h2>
-<table>
-  <tr>
-    <th>Gebruikersnaam</th>
-    <th>Opties</th>
-  </tr>
-<?php getNewusers(); ?>
-</table>
-
-<h2>Berichten:</h2>
-<table>
-  <tr>
-    <th>Telegram gebruikersnaam</th>
-    <th>Bericht</th>
-    <th>Datum (YYYY/MM/DD)</th>
-    <th>Opties</th>
-  </tr>
-  <?php getMessages(); ?>
-</table>
-
-<h2>Oude orders</h2>
-<table>
-  <tr>
-    <th>Telegram gebruikersnaam</th>
-    <th>Product</th>
-    <th>Hoeveelheid</th>
-    <th>Prijs stuk </th>
-    <th>Totaal prijs</th>
-    <th>Orderid</th>
-    <th>Datum (YYYY/MM/DD)</th>
-    <th>Status</th>
-  </tr>
-<?php getComplete(); ?>
-</table>
+  <!-- Oude orders -->
+  <h2>Oude orders</h2>
+  <table>
+    <tr>
+      <th>Telegram gebruikersnaam</th>
+      <th>Product</th>
+      <th>Hoeveelheid</th>
+      <th>Prijs stuk </th>
+      <th>Totaal prijs</th>
+      <th>Orderid</th>
+      <th>Datum (YYYY/MM/DD)</th>
+      <th>Status</th>
+    </tr>
+    <?php getComplete(); ?>
+  </table>
+  <?php
+  if($_GET['error']) {
+    echo '<script>alert("'. $_GET["error"]. '")</script>';
+    echo '<script>window.location.replace("http://'.  $_SERVER['HTTP_HOST'] .'")</script>';
+  }
+  ?>
 </body>
 </html>
 
