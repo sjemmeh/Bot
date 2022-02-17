@@ -121,9 +121,9 @@ mysqli_close($conn);
 
 function markDone($id, $price) {
     require 'config.php';
-
+    // To-Do: Cleaner way for this.
     if($price == '') {
-        echo '<script>window.location.replace("http://'.  $_SERVER['HTTP_HOST'] .'/?error=Geen%20prijs%20ingevoerd.")</script>';
+        echo '<script>window.location.replace("http://'.  $_SERVER['HTTP_HOST'] .'/?error=Voer een prijs in.")</script>'; 
         die();
     }
     $conn = new mysqli($servername, $username, $password, $dbname);

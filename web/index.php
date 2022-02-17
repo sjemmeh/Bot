@@ -148,10 +148,11 @@
     <?php getComplete(); ?>
   </table>
   <?php
-  if($_GET['error']) {
-    echo '<script>alert("'. $_GET["error"]. '")</script>';
-    echo '<script>window.location.replace("http://'.  $_SERVER['HTTP_HOST'] .'")</script>';
-  }
+  // To-Do: Cleaner way for this.
+    if($_GET['error']) {
+      echo '<script>alert("'. $_GET["error"]. '")</script>';
+      echo '<script>window.location.replace("http://'.  $_SERVER['HTTP_HOST'] .'")</script>';
+    }
   ?>
 </body>
 </html>
