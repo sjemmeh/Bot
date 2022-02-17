@@ -8,12 +8,13 @@ const mysql = require('mysql')
 const dotenv = require('dotenv')
 dotenv.config()
 
-const mysql_hostname = '10.5.0.5'
-const mysql_username = 'root'
-const mysql_password = 'kutkop123'
+const token = process.env.APIKEY
+const mysql_hostname = process.env.MYSQLHOSTNAME
+const mysql_username = process.env.MYSQLUSERNAME
+const mysql_password = process.env.MYSQLPASSWORD
 const mysql_database = 'data'
 const debug = 0
-const token = process.env.APIKEY
+
 
 const bot = new TelegramBot(token, {
     polling: true
@@ -179,7 +180,7 @@ bot.onText(/\/registreer (.+)/i, function(msg, match) {
   
   isAuthorized(chatId, function(result){
     console.log("Recieved register command with result " + result)
-    
+
     if (result == 0) return bot.sendMessage(msg.from.id, "*Je registratiestatus:*\nJe registratie is nog niet geaccepteerd.", opts_pending)
     if (result == 1) return bot.sendMessage(msg.from.id, "*Welkom! Kies een van de opties:*", opts_authorized)
     if (result == 2) return bot.sendMessage(msg.from.id, "*Je registratiestatus:*\nJe registratie is geweigerd. \n*Je chatID is:* " + chatId, opts_pending)

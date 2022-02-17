@@ -4,14 +4,14 @@ services:
     image: mariadb
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: kutkop123
+      MYSQL_ROOT_PASSWORD: ${MYSQLPASSWORD}
     volumes:
       - './data/:/var/lib/mysql'
     ports:
       - 3306:3306
     networks:
       vpcbr:
-        ipv4_address: 10.5.0.5
+        ipv4_address: ${MYSQLHOSTNAME}
   node:
     image: "node:8"
     user: "node"
@@ -21,6 +21,7 @@ services:
       - NODE_ENV=production
     volumes:
       - ./node:/home/node/telegram
+      - ./.env:/home/node/telegram/.env
     command: "node bot.js"
     networks:
       vpcbr:
